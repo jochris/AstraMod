@@ -11,28 +11,48 @@ import { Star, Download, ShieldCheck, Zap, ArrowLeft, CheckCircle, Package, Smar
 export const revalidate = 0;
 
 interface DetailProps {
-  params: { slug: string };
+  params: { slug: string } | Promise<{ slug: string }>;
 }
 
 export default async function AppDetailPage({ params }: DetailProps) {
-  const slug = params?.slug || '';
+  let slug = '';
+  try {
+    const p = await Promise.resolve(params);
+    if (p && typeof p.slug === 'string') {
+      slug = p.slug;
+    }
+  } catch (e) {}
 
   let app: any = null;
   let comments: any[] = [];
   let relatedApps: any[] = [];
 
   try {
-    app = await getAppBySlug(slug);
-    if (app) {
-      comments = (await getComments(app.id)) || [];
-      relatedApps = ((await getAllApps({ category: app.category, limit: 5 })) || []).filter(a => a.id !== app.id).slice(0, 4);
+    if (slug) {
+      app = await getAppBySlug(slug);
+      if (app) {
+        comments = (await getComments(app.id)) || [];
+        relatedApps = ((await getAllApps({ category: app.category, limit: 5 })) || []).filter(a => a.id !== app.id).slice(0, 4);
+      }
     }
   } catch (err) {
     console.error('AppDetailPage data fetch error:', err);
   }
 
   if (!app) {
-    notFound();
+    return (
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
+        <Navbar />
+        <main className="flex-1 flex flex-col items-center justify-center text-center max-w-md mx-auto px-4 my-20">
+          <h1 className="text-2xl font-bold text-slate-100 mb-2">Aplikasi Tidak Ditemukan</h1>
+          <p className="text-slate-400 text-xs mb-6">Aplikasi MOD yang kamu cari tidak ditemukan atau telah diperbarui.</p>
+          <Link href="/" className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-xs transition">
+            Kembali ke Katalog MOD
+          </Link>
+        </main>
+        <Footer />
+      </div>
+    );
   }
 
   const formatDownloads = (num: number) => {
