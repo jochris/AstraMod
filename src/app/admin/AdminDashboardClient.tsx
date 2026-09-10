@@ -163,30 +163,31 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
           </button>
 
           <div className="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800 text-xs font-semibold">
-          <button
-            onClick={() => setActiveTab('scraper')}
-            className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-              activeTab === 'scraper' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <RefreshCw className="w-3.5 h-3.5" /> Auto Scraper
-          </button>
-          <button
-            onClick={() => setActiveTab('apps')}
-            className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-              activeTab === 'apps' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Layers className="w-3.5 h-3.5" /> Daftar Application ({totalApps})
-          </button>
-          <button
-            onClick={() => setActiveTab('add')}
-            className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-              activeTab === 'add' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Plus className="w-3.5 h-3.5" /> Tambah Manual
-          </button>
+            <button
+              onClick={() => setActiveTab('scraper')}
+              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
+                activeTab === 'scraper' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <RefreshCw className="w-3.5 h-3.5" /> Auto Scraper
+            </button>
+            <button
+              onClick={() => setActiveTab('apps')}
+              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
+                activeTab === 'apps' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" /> Daftar Application ({totalApps})
+            </button>
+            <button
+              onClick={() => setActiveTab('add')}
+              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
+                activeTab === 'add' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Plus className="w-3.5 h-3.5" /> Tambah Manual
+            </button>
+          </div>
         </div>
       </div>
 
