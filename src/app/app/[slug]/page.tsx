@@ -114,12 +114,9 @@ export default async function AppDetailPage({ params }: DetailProps) {
           <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between relative z-10">
             <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
               <img
-                src={app.iconUrl}
+                src={app.iconUrl || 'https://an1.com/templates/an1/images/logo.png'}
                 alt={app.title}
                 className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover bg-slate-800 border-2 border-slate-700 shadow-xl"
-                onError={(e) => {
-                  (e.target as HTMLElement).setAttribute('src', 'https://an1.com/templates/an1/images/logo.png');
-                }}
               />
 
               <div>
