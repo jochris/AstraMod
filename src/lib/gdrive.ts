@@ -54,7 +54,7 @@ export async function uploadToGoogleDrive(
     ]);
 
     const uploadRes = await fetch(
-      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart',
+      'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&supportsAllDrives=true',
       {
         method: 'POST',
         headers: {
@@ -75,7 +75,7 @@ export async function uploadToGoogleDrive(
     // Set permission to anyone reader
     try {
       await fetch(
-        `https://www.googleapis.com/drive/v3/files/${data.id}/permissions`,
+        `https://www.googleapis.com/drive/v3/files/${data.id}/permissions?supportsAllDrives=true`,
         {
           method: 'POST',
           headers: {
