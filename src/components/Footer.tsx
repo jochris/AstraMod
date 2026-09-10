@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
             <div>
               <h4 className="text-sm font-semibold text-white">Scraper Dynamic Update</h4>
-              <p className="text-xs text-[#8B949E]">Pembaruan otomatis dari HappyMod & AN1 secara berkala.</p>
+              <p className="text-xs text-[#8B949E]">Pembaruan otomatis dari AstraMod Engine secara berkala.</p>
             </div>
           </div>
         </div>

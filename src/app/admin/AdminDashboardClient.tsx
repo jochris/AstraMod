@@ -35,12 +35,12 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
   // Stats
   const totalApps = apps.length;
   const totalDownloads = apps.reduce((acc, curr) => acc + (curr.downloadsCount || 0), 0);
-  const totalScraped = apps.filter(a => a.source === 'HappyMod' || a.source === 'AN1' || a.source === 'AstraMod').length;
+  const totalScraped = apps.filter(a => a.source === 'AstraMod' || a.source === 'HappyMod' || a.source === 'AN1').length;
 
   const handleRunScraper = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsScraping(true);
-    setScrapeLog('Menghubungkan ke server ' + (scrapeSource === 'happymod' ? 'HappyMod' : 'AN1') + '...');
+    setScrapeLog('Menghubungkan ke AstraMod Scraper Engine...');
 
     try {
       const res = await fetch('/api/admin/scrape', {
@@ -89,7 +89,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
           iconUrl: newIconUrl || 'https://an1.com/templates/an1/images/logo.png',
           size: newSize,
           developer: newDeveloper || 'Independent Modder',
-          source: 'Manual',
+          source: 'AstraMod Direct',
         }),
       });
 
@@ -148,7 +148,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
           </div>
           <h1 className="text-2xl font-semibold text-white">Kelola MOD & Auto Scraper</h1>
           <p className="text-xs text-[#8B949E] mt-1">
-            Impor data otomatis dari HappyMod / AN1 atau tambah MOD buatan sendiri.
+            Impor data otomatis dari AstraMod Scraper Engine atau tambah MOD buatan sendiri.
           </p>
         </div>
 
@@ -216,15 +216,15 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
         <div className="bg-[#161B22] border border-[#374151] rounded-[8px] p-6 sm:p-8">
           <div className="max-w-2xl">
             <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#5FED83]" /> Tool Impor / Scraper MOD APK
+              <Sparkles className="w-5 h-5 text-[#5FED83]" /> Tool Impor / AstraMod Scraper Engine
             </h2>
             <p className="text-xs text-[#8B949E] mb-6">
-              Script scraper ini akan otomatis mengambil judul, versi, deskripsi mod, gambar icon, screenshot, dan link download langsung ke database SQLite website kita.
+              Script scraper ini akan otomatis mengambil judul, versi, deskripsi mod, gambar icon, screenshot, dan link download langsung ke database NeonDB website kita.
             </p>
 
             <form onSubmit={handleRunScraper} className="space-y-5 bg-[#0D1117] border border-[#374151] p-5 rounded-[6px]">
               <div>
-                <label className="block text-xs font-semibold text-white mb-2">Pilih Sumber Scraping:</label>
+                <label className="block text-xs font-semibold text-white mb-2">Pilih Server Engine Scraping:</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
@@ -235,7 +235,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                         : 'bg-[#161B22] border-[#374151] text-[#8B949E] hover:text-white'
                     }`}
                   >
-                    <span>HappyMod.to</span>
+                    <span>AstraMod Engine Server 1</span>
                     {scrapeSource === 'happymod' && <CheckCircle className="w-4 h-4 text-[#5FED83]" />}
                   </button>
 
@@ -248,7 +248,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                         : 'bg-[#161B22] border-[#374151] text-[#8B949E] hover:text-white'
                     }`}
                   >
-                    <span>AN1.com</span>
+                    <span>AstraMod Engine Server 2</span>
                     {scrapeSource === 'an1' && <CheckCircle className="w-4 h-4 text-[#A2DAFF]" />}
                   </button>
                 </div>
@@ -275,7 +275,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                 {isScraping ? (
                   <>
                     <RefreshCw className="w-4 h-4 animate-spin text-[#0D1117]" />
-                    <span>Sedang Mengambil Data Dari {scrapeSource.toUpperCase()}...</span>
+                    <span>Sedang Mengambil Data AstraMod Engine...</span>
                   </>
                 ) : (
                   <>
@@ -332,8 +332,8 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                   <td className="py-3 px-2 max-w-xs truncate text-[#5FED83]">{a.modInfo}</td>
                   <td className="py-3 px-2 text-slate-200 font-mono">v{a.version}</td>
                   <td className="py-3 px-2">
-                    <span className="px-2 py-0.5 rounded-[4px] bg-[#0D1117] border border-[#374151] text-[#8B949E] font-medium text-[10px]">
-                      {a.source || 'Manual'}
+                    <span className="px-2 py-0.5 rounded-[4px] bg-[#0D1117] border border-[#374151] text-[#5FED83] font-medium text-[10px]">
+                      AstraMod Direct
                     </span>
                   </td>
                   <td className="py-3 px-2 font-semibold text-white">{a.downloadsCount.toLocaleString()}</td>
