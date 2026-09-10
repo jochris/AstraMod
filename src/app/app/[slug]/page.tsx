@@ -11,11 +11,12 @@ import { Star, Download, ShieldCheck, Zap, ArrowLeft, CheckCircle, Package, Smar
 export const revalidate = 0;
 
 interface DetailProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string } | Promise<{ slug: string }>;
 }
 
 export default async function AppDetailPage({ params }: DetailProps) {
-  const { slug } = await params;
+  const resolvedParams = params ? await Promise.resolve(params) : { slug: '' };
+  const slug = resolvedParams.slug;
   const app = await getAppBySlug(slug);
 
   if (!app) {

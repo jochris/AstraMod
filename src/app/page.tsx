@@ -8,7 +8,11 @@ import { Sparkles, Gamepad2, Smartphone, ShieldCheck, Flame, Filter, Zap } from 
 export const revalidate = 0; // Dynamic server rendering for fresh data
 
 interface PageProps {
-  searchParams: Promise<{
+  searchParams?: {
+    search?: string;
+    category?: string;
+    type?: string;
+  } | Promise<{
     search?: string;
     category?: string;
     type?: string;
@@ -16,7 +20,10 @@ interface PageProps {
 }
 
 export default async function HomePage({ searchParams }: PageProps) {
-  const { search, category, type } = await searchParams;
+  const resolvedParams = searchParams ? await Promise.resolve(searchParams) : {};
+  const search = resolvedParams.search;
+  const category = resolvedParams.category;
+  const type = resolvedParams.type;
 
   const apps = await getAllApps({
     search: search || undefined,
