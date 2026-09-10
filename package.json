@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.18.0",
+    "@neondatabase/serverless": "^1.1.0",
     "@swc/helpers": "^0.5.23",
     "@types/better-sqlite3": "^9.6.0",
     "lucide-react": "^1.43.0",
