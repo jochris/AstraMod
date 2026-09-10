@@ -4,12 +4,13 @@ import CatalogClient from './CatalogClient';
 export const revalidate = 0;
 
 export default async function HomePage(props: {
-  searchParams?: { search?: string; category?: string; type?: string };
+  searchParams?: { search?: string; category?: string; type?: string; tab?: string };
 }) {
   const searchParams = props?.searchParams;
   const search = typeof searchParams?.search === 'string' ? searchParams.search : undefined;
   const category = typeof searchParams?.category === 'string' ? searchParams.category : undefined;
   const type = typeof searchParams?.type === 'string' ? searchParams.type : undefined;
+  const tab = typeof searchParams?.tab === 'string' ? searchParams.tab : undefined;
 
   let apps: any[] = [];
   let categories: { name: string; count: number }[] = [];
@@ -28,6 +29,7 @@ export default async function HomePage(props: {
       searchParam={search}
       categoryParam={category}
       typeParam={type}
+      tabParam={tab}
     />
   );
 }

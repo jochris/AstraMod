@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, Download, ShieldCheck, Gamepad2, Smartphone, Sparkles, Menu, X, Database } from 'lucide-react';
+import { Search, Download, Flame, Gamepad2, Smartphone, Sparkles, Menu, X, Database, Tag } from 'lucide-react';
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -31,16 +31,16 @@ export default function Navbar() {
                 AstraMod
               </span>
               <span className="hidden sm:inline-block text-[11px] font-semibold text-[#0D1117] bg-[#5FED83] px-2 py-0.5 rounded-full border border-[#31C55B]">
-                DARK HORIZON
+                HAPPYMOD DIRECT
               </span>
             </div>
           </Link>
 
           {/* Search Bar - Desktop */}
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-md mx-8 relative">
+          <form onSubmit={handleSearch} className="hidden lg:flex flex-1 max-w-md mx-6 relative">
             <input
               type="text"
-              placeholder="Cari Game MOD, Aplikasi Premium..."
+              placeholder="Cari Game MOD, App Premium, HappyMod..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full bg-[#1F2328] text-white placeholder-[#8B949E] text-sm rounded-[6px] pl-10 pr-4 py-2 border border-[#374151] focus:outline-none focus:border-[#5FED83] transition"
@@ -49,22 +49,30 @@ export default function Navbar() {
           </form>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-            <Link href="/" className="px-3 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 text-[#5FED83]" />
+          <nav className="hidden md:flex items-center gap-1.5 text-xs font-medium">
+            <Link href="/" className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#5FED83]" />
               <span>Beranda</span>
             </Link>
-            <Link href="/?type=game" className="px-3 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
-              <Gamepad2 className="w-4 h-4 text-[#A2DAFF]" />
-              <span>Games</span>
+            <Link href="/?tab=popular" className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
+              <Flame className="w-3.5 h-3.5 text-amber-400" />
+              <span>Populer</span>
             </Link>
-            <Link href="/?type=app" className="px-3 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
-              <Smartphone className="w-4 h-4 text-[#5FED83]" />
+            <Link href="/?tab=categories" className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
+              <Tag className="w-3.5 h-3.5 text-[#A2DAFF]" />
+              <span>Kategori</span>
+            </Link>
+            <Link href="/?type=game" className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
+              <Gamepad2 className="w-3.5 h-3.5 text-[#5FED83]" />
+              <span>Game MOD</span>
+            </Link>
+            <Link href="/?type=app" className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
+              <Smartphone className="w-3.5 h-3.5 text-[#A2DAFF]" />
               <span>Aplikasi</span>
             </Link>
-            <Link href="/admin" className="ml-2 gh-btn-primary text-xs h-[36px] px-3.5">
+            <Link href="/admin" className="ml-1.5 gh-btn-primary text-xs h-[34px] px-3">
               <Database className="w-3.5 h-3.5 text-[#5FED83]" />
-              <span>Admin Scraper</span>
+              <span>Admin</span>
             </Link>
           </nav>
 
@@ -92,7 +100,7 @@ export default function Navbar() {
             <Search className="w-4 h-4 text-[#8B949E] absolute left-3 top-2.5" />
           </form>
 
-          <div className="flex flex-col gap-1 pt-1">
+          <div className="flex flex-col gap-1 pt-1 text-xs">
             <Link
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
@@ -101,18 +109,32 @@ export default function Navbar() {
               <Sparkles className="w-4 h-4 text-[#5FED83]" /> Beranda
             </Link>
             <Link
+              href="/?tab=popular"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
+            >
+              <Flame className="w-4 h-4 text-amber-400" /> Populer
+            </Link>
+            <Link
+              href="/?tab=categories"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
+            >
+              <Tag className="w-4 h-4 text-[#A2DAFF]" /> Kategori
+            </Link>
+            <Link
               href="/?type=game"
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
             >
-              <Gamepad2 className="w-4 h-4 text-[#A2DAFF]" /> Game MOD
+              <Gamepad2 className="w-4 h-4 text-[#5FED83]" /> Game MOD
             </Link>
             <Link
               href="/?type=app"
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
             >
-              <Smartphone className="w-4 h-4 text-[#5FED83]" /> Aplikasi Premium
+              <Smartphone className="w-4 h-4 text-[#A2DAFF]" /> Aplikasi Premium
             </Link>
             <Link
               href="/admin"
