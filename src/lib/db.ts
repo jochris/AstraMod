@@ -1,4 +1,4 @@
-import { createClient, Client } from '@libsql/client';
+type Client = any;
 
 export interface AppItem {
   id: number;
@@ -142,6 +142,7 @@ function getClient(): Client | null {
   if (clientInstance) return clientInstance;
 
   try {
+    const { createClient } = require('@libsql/client');
     let dbUrl: string;
     if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
       dbUrl = 'file:/tmp/moder.db';
@@ -546,7 +547,7 @@ export async function getCategories(): Promise<{ name: string; count: number }[]
       GROUP BY category 
       ORDER BY count DESC
     `);
-    return res.rows.map(r => ({ name: String(r.name), count: Number(r.count) }));
+    return res.rows.map((r: any) => ({ name: String(r.name), count: Number(r.count) }));
   } catch (err) {
     useFallbackStore = true;
     return getCategories();
@@ -563,7 +564,7 @@ export async function getComments(appId: number): Promise<CommentItem[]> {
 
   try {
     const res = await client.execute({ sql: 'SELECT * FROM comments WHERE appId = ? ORDER BY id DESC', args: [appId] });
-    return res.rows.map(r => ({
+    return res.rows.map((r: any) => ({
       id: Number(r.id),
       appId: Number(r.appId),
       username: String(r.username),
