@@ -18,21 +18,41 @@ export async function GET(
 
     let targetUrl = app.downloadUrl;
 
-    // If targetUrl is an an1.com HTML page (e.g. https://an1.com/file_123-dw.html or https://an1.com/123-game.html), resolve real APK URL
+    // Convert legacy an1.co to an1.net
+    if (targetUrl.includes('files.an1.co')) {
+      targetUrl = targetUrl.replace('files.an1.co', 'files.an1.net');
+    }
+
+    // If targetUrl is an an1.com HTML page or missing direct apk, resolve real APK URL
     if (targetUrl.includes('an1.com') && !targetUrl.match(/\.apk($|\?)/i)) {
       try {
         const res = await fetch(targetUrl, {
-          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+          headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
         });
         const html = await res.text();
-        const apkMatch = html.match(/href="(https:\/\/[^"]+\.apk)"/i);
-        if (apkMatch) {
-          targetUrl = apkMatch[1];
+        const apkMatches = Array.from(html.matchAll(/href="(https:\/\/files\.an1\.(?:net|co)\/[^"]+\.apk)"/gi));
+        const realApk = apkMatches.map(m => m[1]).find(url => !url.includes('an1store.apk'));
+        if (realApk) {
+          targetUrl = realApk;
+        } else {
+          const dwMatch = html.match(/href="(\/file_\d+-dw\.html)"/i);
+          if (dwMatch) {
+            const dwRes = await fetch(`https://an1.com${dwMatch[1]}`, {
+              headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            });
+            const dwHtml = await dwRes.text();
+            const dwApkMatches = Array.from(dwHtml.matchAll(/href="(https:\/\/files\.an1\.(?:net|co)\/[^"]+\.apk)"/gi));
+            const dwRealApk = dwApkMatches.map(m => m[1]).find(url => !url.includes('an1store.apk'));
+            if (dwRealApk) targetUrl = dwRealApk;
+          }
         }
       } catch (e) {
-        console.error('Failed to resolve an1.com dw link:', e);
+        console.error('Failed to resolve an1 dw link:', e);
       }
     }
+
+    // Ensure targetUrl uses an1.net
+    targetUrl = targetUrl.replace('files.an1.co', 'files.an1.net');
 
     // Clean filename for download: [AstraMod]_Title_vVersion.apk
     const safeTitle = app.title.replace(/[^\w\s-]/g, '').replace(/\s+/g, '_');
