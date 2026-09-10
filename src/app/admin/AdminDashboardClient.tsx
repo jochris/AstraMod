@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AppItem } from '@/lib/db';
-import { Database, Download, RefreshCw, Plus, Trash2, ShieldCheck, Send, Cpu, Layers, CheckCircle } from 'lucide-react';
+import { Database, Download, RefreshCw, Plus, Trash2, ShieldCheck, Send, Cpu, Layers, CheckCircle, LogOut } from 'lucide-react';
 
 interface AdminClientProps {
   initialApps: AppItem[];
@@ -138,6 +138,11 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
     }
   };
 
+  const handleLogout = async () => {
+    await fetch('/api/admin/logout', { method: 'POST' });
+    window.location.reload();
+  };
+
   return (
     <div>
       {/* Header Banner */}
@@ -160,6 +165,14 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
             title="Kirim URL ke Bing/Yandex untuk diindeks instan"
           >
             <Send className="w-3.5 h-3.5 text-[#5FED83]" /> Instant Index (IndexNow)
+          </button>
+
+          <button
+            onClick={handleLogout}
+            className="h-[36px] px-3.5 rounded-[6px] bg-[#1F2328] hover:bg-[#F85149]/20 text-[#F85149] border border-[#374151] hover:border-[#F85149] text-xs font-medium transition flex items-center gap-1.5"
+            title="Keluar dari Admin Dashboard"
+          >
+            <LogOut className="w-3.5 h-3.5" /> Keluar
           </button>
 
           <div className="flex items-center bg-[#0D1117] p-1 rounded-[6px] border border-[#374151] text-xs font-medium">

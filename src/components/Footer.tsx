@@ -51,7 +51,6 @@ export default function Footer() {
             <Link href="/" className="hover:underline transition">Beranda</Link>
             <Link href="/?type=game" className="hover:underline transition">Game MOD</Link>
             <Link href="/?type=app" className="hover:underline transition">Aplikasi MOD</Link>
-            <Link href="/admin" className="hover:underline transition">Admin Scraper</Link>
           </div>
         </div>
         <p className="text-[12px] text-[#8B949E] mt-6 text-center md:text-left">

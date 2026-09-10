@@ -70,10 +70,6 @@ export default function Navbar() {
               <Smartphone className="w-3.5 h-3.5 text-[#A2DAFF]" />
               <span>Aplikasi</span>
             </Link>
-            <Link href="/admin" className="ml-1.5 gh-btn-primary text-xs h-[34px] px-3">
-              <Database className="w-3.5 h-3.5 text-[#5FED83]" />
-              <span>Admin</span>
-            </Link>
           </nav>
 
           {/* Mobile menu toggle */}
@@ -140,13 +136,6 @@ export default function Navbar() {
               className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
             >
               <Smartphone className="w-4 h-4 text-[#A2DAFF]" /> Aplikasi Premium
-            </Link>
-            <Link
-              href="/admin"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-[6px] text-[#5FED83] bg-[#1F2328] border border-[#374151] flex items-center gap-2 font-medium"
-            >
-              <Database className="w-4 h-4" /> Dashboard Admin
             </Link>
           </div>
         </div>

@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { scrapeAN1, scrapeHappyMod } from '@/lib/scraper';
+import { isAuthorizedAdmin } from '@/lib/auth';
 
 export async function POST(req: NextRequest) {
+  if (!isAuthorizedAdmin(req)) {
+    return NextResponse.json({ success: false, error: 'Akses ditolak. Password admin diperlukan.' }, { status: 401 });
+  }
+
   try {
     const body = await req.json();
     const { source = 'happymod', keyword = '' } = body;
