@@ -27,14 +27,21 @@ export default async function HomePage({ searchParams }: PageProps) {
     // Ignore searchParams unwrap error
   }
 
-  const apps = await getAllApps({
-    search: search || undefined,
-    category: category || undefined,
-    appType: type || undefined,
-  });
+  let apps: any[] = [];
+  let featuredApps: any[] = [];
+  let categories: { name: string; count: number }[] = [];
 
-  const featuredApps = await getAllApps({ featuredOnly: true, limit: 4 });
-  const categories = await getCategories();
+  try {
+    apps = (await getAllApps({
+      search: search || undefined,
+      category: category || undefined,
+      appType: type || undefined,
+    })) || [];
+    featuredApps = (await getAllApps({ featuredOnly: true, limit: 4 })) || [];
+    categories = (await getCategories()) || [];
+  } catch (err) {
+    console.error('HomePage data fetch error:', err);
+  }
 
   const activeCategory = category || 'All';
   const activeType = type || 'all';

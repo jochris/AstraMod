@@ -23,14 +23,23 @@ export default async function AppDetailPage({ params }: DetailProps) {
     }
   } catch (e) {}
 
-  const app = await getAppBySlug(slug);
+  let app: any = null;
+  let comments: any[] = [];
+  let relatedApps: any[] = [];
+
+  try {
+    app = await getAppBySlug(slug);
+    if (app) {
+      comments = (await getComments(app.id)) || [];
+      relatedApps = ((await getAllApps({ category: app.category, limit: 5 })) || []).filter(a => a.id !== app.id).slice(0, 4);
+    }
+  } catch (err) {
+    console.error('AppDetailPage data fetch error:', err);
+  }
 
   if (!app) {
     notFound();
   }
-
-  const comments = await getComments(app.id);
-  const relatedApps = (await getAllApps({ category: app.category, limit: 4 })).filter(a => a.id !== app.id);
 
   const formatDownloads = (num: number) => {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M+';

@@ -46,11 +46,11 @@ export default function AppCard({ app }: { app: AppItem }) {
             <div className="flex items-center gap-3 mt-1.5 text-xs">
               <div className="flex items-center gap-1 text-amber-400 font-semibold">
                 <Star className="w-3.5 h-3.5 fill-amber-400" />
-                <span>{app.rating.toFixed(1)}</span>
+                <span>{Number(app.rating || 4.5).toFixed(1)}</span>
               </div>
               <div className="text-slate-400 flex items-center gap-1">
                 <Download className="w-3 h-3 text-slate-400" />
-                <span>{formatDownloads(app.downloadsCount)}</span>
+                <span>{formatDownloads(Number(app.downloadsCount || 1000))}</span>
               </div>
             </div>
           </div>
