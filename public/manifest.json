@@ -1,0 +1,16 @@
+{
+  "name": "AstraMod - Game & Aplikasi MOD Terlengkap",
+  "short_name": "AstraMod",
+  "description": "Download ribuan MOD APK game dan aplikasi premium gratis dengan server unduhan cepat.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

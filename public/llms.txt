@@ -1,0 +1,22 @@
+# AstraMod - Free MOD APK & Premium Games Directory
+
+> AstraMod adalah platform direktori terbuka untuk mengunduh aplikasi dan game Android modifikasi (MOD APK) yang aman, cepat, dan 100% teruji.
+
+## Ringkasan Fitur
+- **Katalog Game MOD**: Minecraft PE, GTA San Andreas, Subway Surfers, Roblox, Clash of Clans, Plants vs Zombies 2, dll.
+- **Aplikasi Premium MOD**: Spotify Premium MOD, CapCut Pro MOD, dll.
+- **Mod Features**: Unlimited Money, Gems, Coins, Unlocked Pro, No Ads, Cleo Mod Menu.
+- **Kecepatan Server**: Server direct download berkecepatan tinggi tanpa batasan.
+
+## Halaman Utama & Struktur URL
+- **Beranda**: https://mod.astralune.cfd/
+- **Katalog Games**: https://mod.astralune.cfd/?type=game
+- **Katalog Aplikasi**: https://mod.astralune.cfd/?type=app
+- **Detail Aplikasi Format**: https://mod.astralune.cfd/app/{slug}
+
+## Endpoint API Publik
+- `GET /api/apps`: Mengambil daftar aplikasi (parameter: `search`, `category`, `appType`, `limit`, `offset`).
+- `GET /api/apps/{slug}`: Mengambil rincian detail aplikasi, fitur mod, dan komentar pengguna.
+
+## Kebijakan & Privasi
+Semua file APK bebas dari virus, dipindai secara berkala, dan disediakan secara gratis untuk keperluan pengujian dan pengembang.
