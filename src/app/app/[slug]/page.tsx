@@ -126,12 +126,12 @@ export default async function AppDetailPage({ params }: DetailProps) {
                 <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-4 text-xs">
                   <div className="flex items-center gap-1 text-amber-400 font-bold text-sm">
                     <Star className="w-4 h-4 fill-amber-400" />
-                    <span>{app.rating.toFixed(1)}</span>
+                    <span>{Number(app.rating || 4.8).toFixed(1)}</span>
                     <span className="text-slate-400 text-xs font-normal">/ 5.0</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-slate-300 font-medium">
                     <Download className="w-4 h-4 text-emerald-400" />
-                    <span>{formatDownloads(app.downloadsCount)} Unduhan</span>
+                    <span>{formatDownloads(Number(app.downloadsCount || 1000))} Unduhan</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-slate-300 font-medium">
                     <Package className="w-4 h-4 text-cyan-400" />
