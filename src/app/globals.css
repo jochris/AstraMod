@@ -1,12 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #090d16;
-  --foreground: #f1f5f9;
+  --font-mona: 'Mona Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --color-primary: #5FED83;
+  --color-primary-60: #31C55B;
+  --color-primary-70: #08872B;
+  --color-secondary: #FFFFFF;
+  --color-tertiary: #A2DAFF;
+  --color-neutral: #0D1117;
+  --color-surface: #161B22;
+  --color-surface-2: #1F2328;
+  --color-on-surface: #FFFFFF;
+  --color-border: #374151;
+  --color-muted: #8B949E;
+  --color-overlay: #000000B3;
+  --color-error: #F85149;
 }
 
 body {
-  background: #090d16;
-  color: #f1f5f9;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #0D1117;
+  color: #FFFFFF;
+  font-family: var(--font-mona);
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mona);
+  font-weight: 425;
+}
+
+/* GitHub Dark Horizon Utility Components */
+.gh-btn-secondary {
+  background-color: #5FED83;
+  color: #0D1117;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 6px 20px;
+  height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+.gh-btn-secondary:hover {
+  background-color: #31C55B;
+}
+
+.gh-btn-primary {
+  background-color: #1F2328;
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 6px 20px;
+  height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.gh-btn-primary:hover {
+  background-color: #374151;
+  border-color: #8B949E;
+}
+
+.gh-btn-tertiary {
+  background-color: transparent;
+  color: #A2DAFF;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.gh-btn-tertiary:hover {
+  text-decoration: underline;
+}
+
+.gh-card {
+  background-color: #161B22;
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.gh-input {
+  background-color: #1F2328;
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  padding: 12px 16px;
+  height: 54px;
+  font-size: 16px;
+}
+.gh-input::placeholder {
+  color: #8B949E;
+}
+.gh-input:focus {
+  outline: none;
+  border-color: #5FED83;
+}
+
+.gh-chip {
+  background-color: #161B22;
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
 }

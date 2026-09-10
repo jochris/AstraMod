@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AppItem } from '@/lib/db';
-import { Database, Download, RefreshCw, Plus, Trash2, Edit3, ShieldCheck, Search, Sparkles, Layers, CheckCircle } from 'lucide-react';
+import { Database, Download, RefreshCw, Plus, Trash2, ShieldCheck, Sparkles, Layers, CheckCircle } from 'lucide-react';
 
 interface AdminClientProps {
   initialApps: AppItem[];
@@ -35,7 +35,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
   // Stats
   const totalApps = apps.length;
   const totalDownloads = apps.reduce((acc, curr) => acc + (curr.downloadsCount || 0), 0);
-  const totalScraped = apps.filter(a => a.source === 'HappyMod' || a.source === 'AN1').length;
+  const totalScraped = apps.filter(a => a.source === 'HappyMod' || a.source === 'AN1' || a.source === 'AstraMod').length;
 
   const handleRunScraper = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -141,13 +141,13 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
   return (
     <div>
       {/* Header Banner */}
-      <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900 border border-slate-800 p-6 rounded-3xl">
+      <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#161B22] border border-[#374151] p-6 rounded-[8px]">
         <div>
-          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-800/80 mb-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0D1117] bg-[#5FED83] px-2.5 py-0.5 rounded-full border border-[#31C55B] mb-2">
             <Database className="w-3.5 h-3.5" /> Dashboard Control Panel
           </div>
-          <h1 className="text-2xl font-bold text-white">Kelola MOD & Auto Scraper</h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <h1 className="text-2xl font-semibold text-white">Kelola MOD & Auto Scraper</h1>
+          <p className="text-xs text-[#8B949E] mt-1">
             Impor data otomatis dari HappyMod / AN1 atau tambah MOD buatan sendiri.
           </p>
         </div>
@@ -156,33 +156,33 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={handlePingIndexNow}
-            className="px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-bold transition flex items-center gap-1.5"
+            className="h-[36px] px-3.5 rounded-[6px] bg-[#1F2328] hover:bg-[#374151] text-[#A2DAFF] border border-[#374151] text-xs font-medium transition flex items-center gap-1.5"
             title="Kirim URL ke Bing/Yandex untuk diindeks instan"
           >
-            <Sparkles className="w-3.5 h-3.5" /> Instant Index (IndexNow)
+            <Sparkles className="w-3.5 h-3.5 text-[#5FED83]" /> Instant Index (IndexNow)
           </button>
 
-          <div className="flex items-center bg-slate-950 p-1.5 rounded-2xl border border-slate-800 text-xs font-semibold">
+          <div className="flex items-center bg-[#0D1117] p-1 rounded-[6px] border border-[#374151] text-xs font-medium">
             <button
               onClick={() => setActiveTab('scraper')}
-              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-                activeTab === 'scraper' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-1.5 rounded-[4px] transition flex items-center gap-1.5 ${
+                activeTab === 'scraper' ? 'bg-[#5FED83] text-[#0D1117] font-semibold' : 'text-[#8B949E] hover:text-white'
               }`}
             >
               <RefreshCw className="w-3.5 h-3.5" /> Auto Scraper
             </button>
             <button
               onClick={() => setActiveTab('apps')}
-              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-                activeTab === 'apps' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-1.5 rounded-[4px] transition flex items-center gap-1.5 ${
+                activeTab === 'apps' ? 'bg-[#5FED83] text-[#0D1117] font-semibold' : 'text-[#8B949E] hover:text-white'
               }`}
             >
-              <Layers className="w-3.5 h-3.5" /> Daftar Application ({totalApps})
+              <Layers className="w-3.5 h-3.5" /> Daftar App ({totalApps})
             </button>
             <button
               onClick={() => setActiveTab('add')}
-              className={`px-4 py-2 rounded-xl transition flex items-center gap-1.5 ${
-                activeTab === 'add' ? 'bg-emerald-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white'
+              className={`px-3.5 py-1.5 rounded-[4px] transition flex items-center gap-1.5 ${
+                activeTab === 'add' ? 'bg-[#5FED83] text-[#0D1117] font-semibold' : 'text-[#8B949E] hover:text-white'
               }`}
             >
               <Plus className="w-3.5 h-3.5" /> Tambah Manual
@@ -193,69 +193,69 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-          <span className="text-xs text-slate-400 block">Total Aplikasi/Game</span>
-          <span className="text-2xl font-black text-white mt-1 block">{totalApps}</span>
+        <div className="bg-[#161B22] border border-[#374151] p-4 rounded-[8px]">
+          <span className="text-xs text-[#8B949E] block">Total Aplikasi/Game</span>
+          <span className="text-2xl font-bold text-white mt-1 block">{totalApps}</span>
         </div>
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-          <span className="text-xs text-slate-400 block">Hasil Auto Scrape</span>
-          <span className="text-2xl font-black text-emerald-400 mt-1 block">{totalScraped}</span>
+        <div className="bg-[#161B22] border border-[#374151] p-4 rounded-[8px]">
+          <span className="text-xs text-[#8B949E] block">Hasil Auto Scrape</span>
+          <span className="text-2xl font-bold text-[#5FED83] mt-1 block">{totalScraped}</span>
         </div>
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-          <span className="text-xs text-slate-400 block">Total Kategori</span>
-          <span className="text-2xl font-black text-cyan-400 mt-1 block">{categories.length}</span>
+        <div className="bg-[#161B22] border border-[#374151] p-4 rounded-[8px]">
+          <span className="text-xs text-[#8B949E] block">Total Kategori</span>
+          <span className="text-2xl font-bold text-[#A2DAFF] mt-1 block">{categories.length}</span>
         </div>
-        <div className="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-          <span className="text-xs text-slate-400 block">Total Unduhan</span>
-          <span className="text-2xl font-black text-amber-400 mt-1 block">{(totalDownloads / 1000).toFixed(0)}K+</span>
+        <div className="bg-[#161B22] border border-[#374151] p-4 rounded-[8px]">
+          <span className="text-xs text-[#8B949E] block">Total Unduhan</span>
+          <span className="text-2xl font-bold text-amber-400 mt-1 block">{(totalDownloads / 1000).toFixed(0)}K+</span>
         </div>
       </div>
 
       {/* Tab 1: Auto Scraper Tool */}
       {activeTab === 'scraper' && (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8">
+        <div className="bg-[#161B22] border border-[#374151] rounded-[8px] p-6 sm:p-8">
           <div className="max-w-2xl">
-            <h2 className="text-lg font-bold text-slate-100 flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-emerald-400" /> Tool Impor / Scraper MOD APK
+            <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-2">
+              <Sparkles className="w-5 h-5 text-[#5FED83]" /> Tool Impor / Scraper MOD APK
             </h2>
-            <p className="text-xs text-slate-400 mb-6">
+            <p className="text-xs text-[#8B949E] mb-6">
               Script scraper ini akan otomatis mengambil judul, versi, deskripsi mod, gambar icon, screenshot, dan link download langsung ke database SQLite website kita.
             </p>
 
-            <form onSubmit={handleRunScraper} className="space-y-5 bg-slate-950 border border-slate-800/80 p-5 rounded-2xl">
+            <form onSubmit={handleRunScraper} className="space-y-5 bg-[#0D1117] border border-[#374151] p-5 rounded-[6px]">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-2">Pilih Sumber Scraping:</label>
+                <label className="block text-xs font-semibold text-white mb-2">Pilih Sumber Scraping:</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setScrapeSource('happymod')}
-                    className={`p-3.5 rounded-xl border text-left text-xs font-bold transition flex items-center justify-between ${
+                    className={`p-3.5 rounded-[6px] border text-left text-xs font-semibold transition flex items-center justify-between ${
                       scrapeSource === 'happymod'
-                        ? 'bg-emerald-950/80 border-emerald-500 text-emerald-400 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
+                        ? 'bg-[#1F2328] border-[#5FED83] text-[#5FED83]'
+                        : 'bg-[#161B22] border-[#374151] text-[#8B949E] hover:text-white'
                     }`}
                   >
                     <span>HappyMod.to</span>
-                    {scrapeSource === 'happymod' && <CheckCircle className="w-4 h-4 text-emerald-400" />}
+                    {scrapeSource === 'happymod' && <CheckCircle className="w-4 h-4 text-[#5FED83]" />}
                   </button>
 
                   <button
                     type="button"
                     onClick={() => setScrapeSource('an1')}
-                    className={`p-3.5 rounded-xl border text-left text-xs font-bold transition flex items-center justify-between ${
+                    className={`p-3.5 rounded-[6px] border text-left text-xs font-semibold transition flex items-center justify-between ${
                       scrapeSource === 'an1'
-                        ? 'bg-cyan-950/80 border-cyan-500 text-cyan-400 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
+                        ? 'bg-[#1F2328] border-[#A2DAFF] text-[#A2DAFF]'
+                        : 'bg-[#161B22] border-[#374151] text-[#8B949E] hover:text-white'
                     }`}
                   >
                     <span>AN1.com</span>
-                    {scrapeSource === 'an1' && <CheckCircle className="w-4 h-4 text-cyan-400" />}
+                    {scrapeSource === 'an1' && <CheckCircle className="w-4 h-4 text-[#A2DAFF]" />}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-white mb-1">
                   Kata Kunci Pencarian (Opsional):
                 </label>
                 <input
@@ -263,23 +263,23 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                   placeholder="Kosongkan untuk trending, atau ketik nama game (contoh: GTA, Roblox, Minecraft)..."
                   value={scrapeKeyword}
                   onChange={(e) => setScrapeKeyword(e.target.value)}
-                  className="w-full bg-slate-900 text-slate-100 placeholder-slate-400 text-xs rounded-xl p-3 border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white placeholder-[#8B949E] text-xs rounded-[6px] p-3 border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isScraping}
-                className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full h-[43px] rounded-[6px] bg-[#5FED83] hover:bg-[#31C55B] text-[#0D1117] font-semibold text-sm transition flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {isScraping ? (
                   <>
-                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <RefreshCw className="w-4 h-4 animate-spin text-[#0D1117]" />
                     <span>Sedang Mengambil Data Dari {scrapeSource.toUpperCase()}...</span>
                   </>
                 ) : (
                   <>
-                    <RefreshCw className="w-4 h-4" />
+                    <RefreshCw className="w-4 h-4 text-[#0D1117]" />
                     <span>Jalankan Auto Scraper Sekarang</span>
                   </>
                 )}
@@ -288,8 +288,8 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
 
             {/* Log / Status box */}
             {scrapeLog && (
-              <div className="mt-6 p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-slate-300">
-                <span className="text-slate-400 block mb-1 font-sans font-semibold">Status Scraper:</span>
+              <div className="mt-6 p-4 rounded-[6px] bg-[#0D1117] border border-[#374151] text-xs font-mono text-white">
+                <span className="text-[#8B949E] block mb-1 font-sans font-semibold">Status Scraper:</span>
                 <p>{scrapeLog}</p>
               </div>
             )}
@@ -299,12 +299,12 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
 
       {/* Tab 2: Manage Apps Table */}
       {activeTab === 'apps' && (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 overflow-x-auto">
-          <h2 className="text-lg font-bold text-slate-100 mb-4">Daftar MOD APK Terdaftar ({apps.length})</h2>
+        <div className="bg-[#161B22] border border-[#374151] rounded-[8px] p-6 overflow-x-auto">
+          <h2 className="text-lg font-semibold text-white mb-4">Daftar MOD APK Terdaftar ({apps.length})</h2>
 
           <table className="w-full text-left text-xs">
             <thead>
-              <tr className="border-b border-slate-800 text-slate-400 font-semibold">
+              <tr className="border-b border-[#374151] text-[#8B949E] font-semibold">
                 <th className="pb-3">App</th>
                 <th className="pb-3">Kategori</th>
                 <th className="pb-3">Fitur Mod</th>
@@ -314,33 +314,33 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                 <th className="pb-3 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60">
+            <tbody className="divide-y divide-[#374151]">
               {apps.map((a) => (
-                <tr key={a.id} className="hover:bg-slate-950/40 transition">
+                <tr key={a.id} className="hover:bg-[#1F2328] transition">
                   <td className="py-3 pr-3">
                     <div className="flex items-center gap-3">
-                      <img src={a.iconUrl} alt={a.title} className="w-10 h-10 rounded-lg object-cover bg-slate-800" />
+                      <img src={a.iconUrl || 'https://an1.com/templates/an1/images/logo.png'} alt={a.title} className="w-10 h-10 rounded-[6px] object-cover bg-[#0D1117] border border-[#374151]" />
                       <div>
-                        <a href={`/app/${a.slug}`} target="_blank" className="font-bold text-slate-200 hover:text-emerald-400">
+                        <a href={`/app/${a.slug}`} target="_blank" className="font-semibold text-white hover:text-[#5FED83]">
                           {a.title}
                         </a>
-                        <span className="text-[10px] text-slate-400 block">{a.packageName}</span>
+                        <span className="text-[10px] text-[#8B949E] block">{a.packageName}</span>
                       </div>
                     </div>
                   </td>
-                  <td className="py-3 px-2 font-medium text-slate-300">{a.category}</td>
-                  <td className="py-3 px-2 max-w-xs truncate text-emerald-400">{a.modInfo}</td>
-                  <td className="py-3 px-2 text-slate-300 font-mono">v{a.version}</td>
+                  <td className="py-3 px-2 font-medium text-slate-200">{a.category}</td>
+                  <td className="py-3 px-2 max-w-xs truncate text-[#5FED83]">{a.modInfo}</td>
+                  <td className="py-3 px-2 text-slate-200 font-mono">v{a.version}</td>
                   <td className="py-3 px-2">
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-semibold text-[10px]">
+                    <span className="px-2 py-0.5 rounded-[4px] bg-[#0D1117] border border-[#374151] text-[#8B949E] font-medium text-[10px]">
                       {a.source || 'Manual'}
                     </span>
                   </td>
-                  <td className="py-3 px-2 font-semibold text-slate-200">{a.downloadsCount.toLocaleString()}</td>
+                  <td className="py-3 px-2 font-semibold text-white">{a.downloadsCount.toLocaleString()}</td>
                   <td className="py-3 text-right">
                     <button
                       onClick={() => handleDeleteApp(a.slug)}
-                      className="p-1.5 rounded-lg text-rose-400 hover:bg-rose-950/60 transition"
+                      className="p-1.5 rounded-[4px] text-[#F85149] hover:bg-[#1F2328] transition"
                       title="Hapus MOD"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -355,80 +355,80 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
 
       {/* Tab 3: Manual Add */}
       {activeTab === 'add' && (
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-3xl">
-          <h2 className="text-lg font-bold text-slate-100 mb-6">Tambah MOD APK Manual</h2>
+        <div className="bg-[#161B22] border border-[#374151] rounded-[8px] p-6 sm:p-8 max-w-3xl">
+          <h2 className="text-lg font-semibold text-white mb-6">Tambah MOD APK Manual</h2>
 
           <form onSubmit={handleAddApp} className="space-y-4 text-xs">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Judul Aplikasi / Game *</label>
+                <label className="block text-white font-semibold mb-1">Judul Aplikasi / Game *</label>
                 <input
                   type="text"
                   placeholder="Contoh: Mobile Legends MOD"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Versi *</label>
+                <label className="block text-white font-semibold mb-1">Versi *</label>
                 <input
                   type="text"
                   placeholder="Contoh: 1.8.90"
                   value={newVersion}
                   onChange={(e) => setNewVersion(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                   required
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-slate-300 font-semibold mb-1">Detail Fitur MOD *</label>
+              <label className="block text-white font-semibold mb-1">Detail Fitur MOD *</label>
               <input
                 type="text"
                 placeholder="Contoh: Unlimited Diamonds, Map Hack, Skin Unlocked"
                 value={newModInfo}
                 onChange={(e) => setNewModInfo(e.target.value)}
-                className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 required
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Link Unduhan APK (Direct / Mirror) *</label>
+                <label className="block text-white font-semibold mb-1">Link Unduhan APK (Direct / Mirror) *</label>
                 <input
                   type="text"
                   placeholder="https://files.domain.com/app.apk"
                   value={newDownloadUrl}
                   onChange={(e) => setNewDownloadUrl(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">URL Gambar Icon</label>
+                <label className="block text-white font-semibold mb-1">URL Gambar Icon</label>
                 <input
                   type="text"
                   placeholder="https://domain.com/icon.png"
                   value={newIconUrl}
                   onChange={(e) => setNewIconUrl(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Kategori</label>
+                <label className="block text-white font-semibold mb-1">Kategori</label>
                 <select
                   value={newCategory}
                   onChange={(e) => setNewCategory(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 >
                   <option value="Action">Action</option>
                   <option value="Arcade">Arcade</option>
@@ -443,11 +443,11 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Tipe</label>
+                <label className="block text-white font-semibold mb-1">Tipe</label>
                 <select
                   value={newAppType}
                   onChange={(e) => setNewAppType(e.target.value as any)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 >
                   <option value="game">Game</option>
                   <option value="app">Aplikasi</option>
@@ -455,25 +455,25 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
               </div>
 
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Ukuran File</label>
+                <label className="block text-white font-semibold mb-1">Ukuran File</label>
                 <input
                   type="text"
                   placeholder="120 MB"
                   value={newSize}
                   onChange={(e) => setNewSize(e.target.value)}
-                  className="w-full bg-slate-950 text-slate-100 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-[#1F2328] text-white p-3 rounded-[6px] border border-[#374151] focus:outline-none focus:border-[#5FED83]"
                 />
               </div>
             </div>
 
             {addMessage && (
-              <p className="text-xs font-semibold text-emerald-400 pt-2">{addMessage}</p>
+              <p className="text-xs font-semibold text-[#5FED83] pt-2">{addMessage}</p>
             )}
 
             <button
               type="submit"
               disabled={isAdding}
-              className="py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-md transition disabled:opacity-50"
+              className="h-[43px] px-6 rounded-[6px] bg-[#5FED83] hover:bg-[#31C55B] text-[#0D1117] font-semibold text-xs transition disabled:opacity-50"
             >
               {isAdding ? 'Menyimpan...' : 'Simpan MOD Baru'}
             </button>
