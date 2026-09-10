@@ -8,24 +8,13 @@ import { Sparkles, Gamepad2, Smartphone, ShieldCheck, Flame, Filter, Zap } from 
 export const revalidate = 0; // Dynamic server rendering for fresh data
 
 interface PageProps {
-  searchParams?: Promise<{ search?: string; category?: string; type?: string }> | { search?: string; category?: string; type?: string };
+  searchParams?: { search?: string; category?: string; type?: string };
 }
 
 export default async function HomePage({ searchParams }: PageProps) {
-  let search: string | undefined = undefined;
-  let category: string | undefined = undefined;
-  let type: string | undefined = undefined;
-
-  try {
-    const sp = await searchParams;
-    if (sp) {
-      search = typeof sp.search === 'string' ? sp.search : undefined;
-      category = typeof sp.category === 'string' ? sp.category : undefined;
-      type = typeof sp.type === 'string' ? sp.type : undefined;
-    }
-  } catch (e) {
-    // Ignore searchParams unwrap error
-  }
+  const search = searchParams?.search;
+  const category = searchParams?.category;
+  const type = searchParams?.type;
 
   let apps: any[] = [];
   let featuredApps: any[] = [];
