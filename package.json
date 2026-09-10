@@ -29,6 +29,9 @@
     "typescript": "^5"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["unrs-resolver", "@swc/core"]
+    "onlyBuiltDependencies": [
+      "unrs-resolver",
+      "@swc/core"
+    ]
   }
 }

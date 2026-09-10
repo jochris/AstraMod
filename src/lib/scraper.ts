@@ -1,4 +1,5 @@
 import { createApp, getAppBySlug, updateApp } from './db';
+import { uploadToGoogleDrive } from './gdrive';
 
 function slugify(text: string): string {
   return text
@@ -104,6 +105,8 @@ export async function scrapeAN1(keyword: string = ''): Promise<ScrapeResult> {
           }
         }
 
+        const finalDownloadUrl = await uploadToGoogleDrive(downloadUrl, `${slug}-${version}.apk`);
+
         const appData = {
           title,
           slug,
@@ -118,7 +121,7 @@ export async function scrapeAN1(keyword: string = ''): Promise<ScrapeResult> {
           rating: 4.8,
           downloadsCount: Math.floor(Math.random() * 50000) + 10000,
           description: `Download ${title} MOD APK (Versi ${version}). Nikmati fitur ${modInfo} gratis & 100% aman untuk Android.`,
-          downloadUrl,
+          downloadUrl: finalDownloadUrl,
           screenshots: JSON.stringify(screenshots),
           source: 'AstraMod',
           isFeatured: importedCount % 2 === 0 ? 1 : 0,
@@ -203,6 +206,9 @@ export async function scrapeHappyMod(keyword: string = ''): Promise<ScrapeResult
         const iconUrl = imgs.length > 0 ? imgs[0] : 'https://happymod.to/static/img/logo.png';
         const screenshots = imgs.slice(1, 6);
 
+        const origUrl = `${url}download.html`;
+        const finalDownloadUrl = await uploadToGoogleDrive(origUrl, `${slug}-${version}.apk`);
+
         const appData = {
           title: cleanTitle,
           slug: slug || `moder-${Date.now()}`,
@@ -217,7 +223,7 @@ export async function scrapeHappyMod(keyword: string = ''): Promise<ScrapeResult
           rating: 4.7,
           downloadsCount: Math.floor(Math.random() * 80000) + 20000,
           description: `Download ${cleanTitle} MOD APK v${version}. Nikmati fitur ${modInfo} bebas iklan & 100% working.`,
-          downloadUrl: `${url}download.html`,
+          downloadUrl: finalDownloadUrl,
           screenshots: JSON.stringify(screenshots),
           source: 'AstraMod',
           isFeatured: importedCount % 2 === 0 ? 1 : 0,

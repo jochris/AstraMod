@@ -7,14 +7,11 @@ import { Sparkles, Gamepad2, Smartphone, ShieldCheck, Flame, Filter, Zap } from 
 
 export const revalidate = 0; // Dynamic server rendering for fresh data
 
-interface PageProps {
-  searchParams?: { search?: string; category?: string; type?: string };
-}
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const search = searchParams?.search;
-  const category = searchParams?.category;
-  const type = searchParams?.type;
+export default async function HomePage(props: { searchParams?: { search?: string; category?: string; type?: string } }) {
+  const searchParams = props?.searchParams;
+  const search = typeof searchParams?.search === 'string' ? searchParams.search : undefined;
+  const category = typeof searchParams?.category === 'string' ? searchParams.category : undefined;
+  const type = typeof searchParams?.type === 'string' ? searchParams.type : undefined;
 
   let apps: any[] = [];
   let featuredApps: any[] = [];
