@@ -34,14 +34,9 @@ export default function DownloadModal({
     }
   }, [countdown]);
 
-  const handleDownloadClick = async () => {
-    try {
-      await fetch(`/api/apps/${slug}/download`, { method: 'POST' });
-      if (onDownloadStarted) onDownloadStarted();
-    } catch (e) {
-      console.error(e);
-    }
-    window.open(downloadUrl, '_blank');
+  const handleDownloadClick = () => {
+    if (onDownloadStarted) onDownloadStarted();
+    window.location.href = `/api/apps/${slug}/file`;
   };
 
   return (
