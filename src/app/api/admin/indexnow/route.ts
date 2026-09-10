@@ -5,7 +5,7 @@ import { pingIndexNow } from '@/lib/indexnow';
 export async function POST(req: NextRequest) {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mod.astralune.cfd';
-    const apps = getAllApps();
+    const apps = await getAllApps();
     const urls = [
       baseUrl,
       `${baseUrl}/?type=game`,

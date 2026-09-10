@@ -124,13 +124,13 @@ export async function scrapeAN1(keyword: string = ''): Promise<ScrapeResult> {
           isFeatured: importedCount % 2 === 0 ? 1 : 0,
         };
 
-        const existing = getAppBySlug(slug);
+        const existing = await getAppBySlug(slug);
         if (!existing) {
-          createApp(appData);
+          await createApp(appData);
           importedCount++;
           items.push(appData);
         } else {
-          updateApp(existing.id, appData);
+          await updateApp(existing.id, appData);
           items.push(appData);
         }
       } catch (err) {
@@ -223,13 +223,13 @@ export async function scrapeHappyMod(keyword: string = ''): Promise<ScrapeResult
           isFeatured: importedCount % 2 === 0 ? 1 : 0,
         };
 
-        const existing = getAppBySlug(appData.slug);
+        const existing = await getAppBySlug(appData.slug);
         if (!existing) {
-          createApp(appData);
+          await createApp(appData);
           importedCount++;
           items.push(appData);
         } else {
-          updateApp(existing.id, appData);
+          await updateApp(existing.id, appData);
           items.push(appData);
         }
       } catch (err) {

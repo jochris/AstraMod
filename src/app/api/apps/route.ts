@@ -11,8 +11,8 @@ export async function GET(req: NextRequest) {
     const limit = searchParams.get('limit') ? parseInt(searchParams.get('limit')!) : undefined;
     const offset = searchParams.get('offset') ? parseInt(searchParams.get('offset')!) : undefined;
 
-    const apps = getAllApps({ search, category, appType, featuredOnly, limit, offset });
-    const categories = getCategories();
+    const apps = await getAllApps({ search, category, appType, featuredOnly, limit, offset });
+    const categories = await getCategories();
 
     return NextResponse.json({
       success: true,
@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       version: body.version || '1.0.0',
     };
 
-    const newApp = createApp(appData);
+    const newApp = await createApp(appData);
     return NextResponse.json({ success: true, data: newApp }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });

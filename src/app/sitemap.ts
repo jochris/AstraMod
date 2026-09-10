@@ -1,10 +1,10 @@
 import { MetadataRoute } from 'next';
 import { getAllApps } from '@/lib/db';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://mod.astralune.cfd';
 
-  const apps = getAllApps();
+  const apps = await getAllApps();
 
   const appUrls: MetadataRoute.Sitemap = apps.map((app) => ({
     url: `${baseUrl}/app/${app.slug}`,

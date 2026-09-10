@@ -4,12 +4,12 @@ import { getAppBySlug, incrementDownloads } from '@/lib/db';
 export async function POST(req: NextRequest, { params }: { params: Promise<{ slug: string }> }) {
   try {
     const { slug } = await params;
-    const app = getAppBySlug(slug);
+    const app = await getAppBySlug(slug);
     if (!app) {
       return NextResponse.json({ success: false, error: 'Aplikasi tidak ditemukan.' }, { status: 404 });
     }
 
-    incrementDownloads(app.id);
+    await incrementDownloads(app.id);
 
     return NextResponse.json({
       success: true,

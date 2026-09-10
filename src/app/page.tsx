@@ -18,14 +18,14 @@ interface PageProps {
 export default async function HomePage({ searchParams }: PageProps) {
   const { search, category, type } = await searchParams;
 
-  const apps = getAllApps({
+  const apps = await getAllApps({
     search: search || undefined,
     category: category || undefined,
     appType: type || undefined,
   });
 
-  const featuredApps = getAllApps({ featuredOnly: true, limit: 4 });
-  const categories = getCategories();
+  const featuredApps = await getAllApps({ featuredOnly: true, limit: 4 });
+  const categories = await getCategories();
 
   const activeCategory = category || 'All';
   const activeType = type || 'all';

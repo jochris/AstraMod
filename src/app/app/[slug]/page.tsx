@@ -16,14 +16,14 @@ interface DetailProps {
 
 export default async function AppDetailPage({ params }: DetailProps) {
   const { slug } = await params;
-  const app = getAppBySlug(slug);
+  const app = await getAppBySlug(slug);
 
   if (!app) {
     notFound();
   }
 
-  const comments = getComments(app.id);
-  const relatedApps = getAllApps({ category: app.category, limit: 4 }).filter(a => a.id !== app.id);
+  const comments = await getComments(app.id);
+  const relatedApps = (await getAllApps({ category: app.category, limit: 4 })).filter(a => a.id !== app.id);
 
   const formatDownloads = (num: number) => {
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M+';

@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'App ID dan Komentar wajib diisi.' }, { status: 400 });
     }
 
-    const newComment = addComment(appId, username, rating || 5, comment);
+    const newComment = await addComment(appId, username, rating || 5, comment);
     return NextResponse.json({ success: true, data: newComment }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });

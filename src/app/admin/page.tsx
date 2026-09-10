@@ -6,8 +6,8 @@ import AdminDashboardClient from './AdminDashboardClient';
 export const revalidate = 0;
 
 export default async function AdminPage() {
-  const apps = getAllApps();
-  const categories = getCategories();
+  const apps = await getAllApps();
+  const categories = await getCategories();
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
