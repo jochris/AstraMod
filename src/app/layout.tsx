@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AstraMod - GitHub Dark Horizon MOD Direct Catalog",
+  title: "AstraMod - Katalog Game & Aplikasi MOD Terlengkap",
   description: "Download ribuan MOD APK game dan aplikasi premium gratis dengan server unduhan cepat dan aman.",
   metadataBase: new URL('https://mod.astralune.cfd'),
   alternates: {

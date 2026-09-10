@@ -89,7 +89,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
           iconUrl: newIconUrl || 'https://an1.com/templates/an1/images/logo.png',
           size: newSize,
           developer: newDeveloper || 'Independent Modder',
-          source: 'AstraMod Direct',
+          source: 'AstraMod Store',
         }),
       });
 
@@ -333,7 +333,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
                   <td className="py-3 px-2 text-slate-200 font-mono">v{a.version}</td>
                   <td className="py-3 px-2">
                     <span className="px-2 py-0.5 rounded-[4px] bg-[#0D1117] border border-[#374151] text-[#5FED83] font-medium text-[10px]">
-                      AstraMod Direct
+                      AstraMod Store
                     </span>
                   </td>
                   <td className="py-3 px-2 font-semibold text-white">{a.downloadsCount.toLocaleString()}</td>
@@ -399,7 +399,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-white font-semibold mb-1">Link Unduhan APK (Direct / Mirror) *</label>
+                <label className="block text-white font-semibold mb-1">Link Unduhan APK (Server / Mirror) *</label>
                 <input
                   type="text"
                   placeholder="https://files.domain.com/app.apk"

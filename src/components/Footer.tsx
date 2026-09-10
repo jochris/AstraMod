@@ -21,8 +21,8 @@ export default function Footer() {
               <Zap className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white">Direct Stream Download</h4>
-              <p className="text-xs text-[#8B949E]">Unduhan langsung tanpa iklan atau pengalihan luar.</p>
+              <h4 className="text-sm font-semibold text-white">Unduhan Server Cepat</h4>
+              <p className="text-xs text-[#8B949E]">Server unduhan tinggi bebas dari iklan berlebih.</p>
             </div>
           </div>
           <div className="flex items-center gap-3">

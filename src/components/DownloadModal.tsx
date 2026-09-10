@@ -51,7 +51,7 @@ export default function DownloadModal({
           </p>
         </div>
         <span className="text-xs font-medium text-[#0D1117] bg-[#5FED83] px-2.5 py-1 rounded-full border border-[#31C55B]">
-          Direct Fast Stream
+          Server Cepat
         </span>
       </div>
 
@@ -83,7 +83,7 @@ export default function DownloadModal({
             className="w-full h-[48px] rounded-[6px] bg-[#5FED83] hover:bg-[#31C55B] text-[#0D1117] font-semibold text-base transition-colors flex items-center justify-center gap-2"
           >
             <Download className="w-5 h-5 text-[#0D1117]" />
-            <span>Download APK (Server Utama Direct Stream)</span>
+            <span>Download APK (Server Utama High-Speed)</span>
           </button>
 
           <button

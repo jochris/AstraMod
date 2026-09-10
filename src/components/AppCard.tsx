@@ -64,7 +64,7 @@ export default function AppCard({ app }: { app: AppItem }) {
       {/* Action Footer */}
       <div className="mt-4 pt-3 border-t border-[#374151] flex items-center justify-between">
         <span className="text-[12px] text-[#8B949E] font-medium">
-          {app.size || 'Variatif'} • AstraMod Direct
+          {app.size || 'Variatif'} • AstraMod Store
         </span>
         <span className="text-xs font-medium text-[#5FED83] group-hover:underline flex items-center gap-1">
           Unduh APK <Download className="w-3.5 h-3.5" />

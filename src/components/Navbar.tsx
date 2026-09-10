@@ -31,7 +31,7 @@ export default function Navbar() {
                 AstraMod
               </span>
               <span className="hidden sm:inline-block text-[11px] font-semibold text-[#0D1117] bg-[#5FED83] px-2 py-0.5 rounded-full border border-[#31C55B]">
-                DIRECT STREAM
+                MOD STORE
               </span>
             </div>
           </Link>

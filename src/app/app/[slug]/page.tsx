@@ -125,7 +125,7 @@ export default async function AppDetailPage({ params }: DetailProps) {
                     {app.category}
                   </span>
                   <span className="text-xs font-medium text-[#A2DAFF] bg-[#1F2328] px-2.5 py-0.5 rounded-full border border-[#374151]">
-                    Status: Direct Stream Working
+                    Status: 100% Work & Teruji
                   </span>
                 </div>
 

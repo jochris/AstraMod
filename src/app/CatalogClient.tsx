@@ -130,8 +130,8 @@ export default function CatalogClient({
 
   const faqs = [
     {
-      q: 'Apa itu AstraMod Direct Stream?',
-      a: 'AstraMod adalah platform penyedia file MOD APK terverifikasi 100% working dengan teknologi Direct CDN Stream. Anda dapat mendownload file APK langsung dari server kami tanpa iklan pop-up atau pengalihan external.',
+      q: 'Apa itu AstraMod Store?',
+      a: 'AstraMod adalah platform penyedia file MOD APK terverifikasi 100% working dengan server cepat terpercaya. Anda dapat mendownload file APK langsung dari server kami tanpa iklan pop-up atau pengalihan external.',
     },
     {
       q: 'Apakah semua file MOD APK di AstraMod aman dari virus?',
@@ -139,7 +139,7 @@ export default function CatalogClient({
     },
     {
       q: 'Mengapa unduhan di AstraMod langsung tanpa redirect?',
-      a: 'AstraMod menggunakan rute streaming proxy internal (/api/apps/[slug]/file) yang secara otomatis menamai file dengan format [AstraMod]_[NamaApp]_v[Versi].apk dan mengirimkannya langsung ke browser Anda.',
+      a: 'AstraMod menggunakan rute streaming proxy internal yang secara otomatis menamai file dengan format [AstraMod]_[NamaApp]_v[Versi].apk dan mengirimkannya langsung ke browser Anda.',
     },
     {
       q: 'Bagaimana cara memasang (install) file APK MOD di HP Android?',
@@ -162,15 +162,15 @@ export default function CatalogClient({
                   <ShieldCheck className="w-4 h-4 text-[#5FED83]" /> 100% Working MODs
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F2328] border border-[#374151] text-[#A2DAFF] text-xs font-semibold">
-                  <Zap className="w-4 h-4 text-[#A2DAFF]" /> Direct Stream CDN
+                  <Zap className="w-4 h-4 text-[#A2DAFF]" /> Server Cepat Teruji
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F2328] border border-[#374151] text-amber-400 text-xs font-semibold">
-                  <Flame className="w-4 h-4 text-amber-400" /> Zero External Redirects
+                  <Flame className="w-4 h-4 text-amber-400" /> Tanpa Pengalihan Iklan
                 </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.1] mb-4">
-                AstraMod Direct — <span className="text-[#5FED83]">MOD APK</span> Store & Direct CDN
+                AstraMod Store — <span className="text-[#5FED83]">MOD APK</span> Catalog & Server Cepat
               </h1>
               <p className="text-base sm:text-lg text-[#8B949E] leading-relaxed max-w-2xl">
                 Platform resmi penyedia game MOD dan aplikasi premium gratis terlengkap dengan server unduhan langsung berkecepatan tinggi tanpa batasan kuota.
@@ -369,7 +369,7 @@ export default function CatalogClient({
                 ) : activeTab === 'popular' ? (
                   <><Flame className="w-5 h-5 text-amber-400" /> MOD Paling Populer</>
                 ) : activeType === 'game' ? (
-                  <><Gamepad2 className="w-5 h-5 text-[#5FED83]" /> Game MOD Direct</>
+                  <><Gamepad2 className="w-5 h-5 text-[#5FED83]" /> Game MOD Terpopuler</>
                 ) : activeType === 'app' ? (
                   <><Smartphone className="w-5 h-5 text-[#A2DAFF]" /> Aplikasi Premium Unlocked</>
                 ) : activeCategory !== 'All' ? (
@@ -412,7 +412,7 @@ export default function CatalogClient({
         {!searchParam && activeCategory === 'All' && activeTab === 'home' && (
           <section className="mb-16">
             <div className="text-center max-w-2xl mx-auto mb-8">
-              <h2 className="text-2xl font-semibold text-white">Mengapa Memilih AstraMod Direct?</h2>
+              <h2 className="text-2xl font-semibold text-white">Mengapa Memilih AstraMod Store?</h2>
               <p className="text-xs text-[#8B949E] mt-1">
                 Platform penyedia MOD APK modern dengan standar keamanan dan kenyamanan unduhan tertinggi.
               </p>
@@ -433,9 +433,9 @@ export default function CatalogClient({
                 <div className="w-10 h-10 rounded-[6px] bg-[#0D1117] border border-[#374151] flex items-center justify-center text-[#A2DAFF] mb-3">
                   <Zap className="w-5 h-5 text-[#A2DAFF]" />
                 </div>
-                <h3 className="text-sm font-semibold text-white mb-1">Direct Stream Download</h3>
+                <h3 className="text-sm font-semibold text-white mb-1">Unduhan Server Cepat</h3>
                 <p className="text-xs text-[#8B949E] leading-relaxed">
-                  File diunduh secara langsung dari rute proxy AstraMod tanpa dialihkan ke situs pihak ketiga.
+                  File diunduh secara langsung tanpa iklan pop-up atau pengalihan ke situs luar.
                 </p>
               </div>
 
