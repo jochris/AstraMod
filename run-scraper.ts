@@ -4,7 +4,7 @@ const path = require('path');
 // Load .env.local manually
 try {
   const envContent = fs.readFileSync(path.join(__dirname, '.env.local'), 'utf8');
-  envContent.split('\n').forEach(line => {
+  envContent.split('\n').forEach((line: string) => {
     const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
     if (match) {
       const key = match[1];

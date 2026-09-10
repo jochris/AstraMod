@@ -329,6 +329,7 @@ export async function getAppById(id: number): Promise<AppItem | null> {
 export async function createApp(appData: Omit<AppItem, 'id' | 'createdAt' | 'updatedAt'>): Promise<AppItem> {
   await initDb();
   const sql = getSql();
+  if (!sql) throw new Error('Database connection not configured');
 
   try {
     const rows = await sql`
@@ -464,6 +465,7 @@ export async function getComments(appId: number): Promise<CommentItem[]> {
 export async function addComment(appId: number, username: string, rating: number, comment: string): Promise<CommentItem> {
   await initDb();
   const sql = getSql();
+  if (!sql) throw new Error('Database connection not configured');
 
   try {
     const rows = await sql`
