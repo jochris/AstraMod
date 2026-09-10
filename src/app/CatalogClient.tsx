@@ -6,11 +6,13 @@ import Footer from '@/components/Footer';
 import AppCard from '@/components/AppCard';
 import Link from 'next/link';
 import {
-  Sparkles,
+  Home,
+  TrendingUp,
+  LayoutGrid,
+  Cpu,
   Gamepad2,
   Smartphone,
   ShieldCheck,
-  Flame,
   Zap,
   Tag,
   Search,
@@ -165,7 +167,7 @@ export default function CatalogClient({
                   <Zap className="w-4 h-4 text-[#A2DAFF]" /> Server Cepat Teruji
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F2328] border border-[#374151] text-amber-400 text-xs font-semibold">
-                  <Flame className="w-4 h-4 text-amber-400" /> Tanpa Pengalihan Iklan
+                  <CheckCircle2 className="w-4 h-4 text-amber-400" /> Tanpa Pengalihan Iklan
                 </span>
               </div>
 
@@ -238,7 +240,7 @@ export default function CatalogClient({
                   : 'border-transparent text-[#8B949E] hover:text-white'
               }`}
             >
-              <Sparkles className="w-4 h-4 text-[#5FED83]" /> Beranda
+              <Home className="w-4 h-4 text-[#5FED83]" /> Beranda
             </button>
 
             <button
@@ -249,7 +251,7 @@ export default function CatalogClient({
                   : 'border-transparent text-[#8B949E] hover:text-white'
               }`}
             >
-              <Flame className="w-4 h-4 text-amber-400" /> Populer
+              <TrendingUp className="w-4 h-4 text-amber-400" /> Populer
             </button>
 
             <button
@@ -367,7 +369,7 @@ export default function CatalogClient({
                 {searchParam ? (
                   <>Hasil Pencarian: &ldquo;{searchParam}&rdquo;</>
                 ) : activeTab === 'popular' ? (
-                  <><Flame className="w-5 h-5 text-amber-400" /> MOD Paling Populer</>
+                  <><TrendingUp className="w-5 h-5 text-amber-400" /> MOD Paling Populer</>
                 ) : activeType === 'game' ? (
                   <><Gamepad2 className="w-5 h-5 text-[#5FED83]" /> Game MOD Terpopuler</>
                 ) : activeType === 'app' ? (
@@ -375,7 +377,7 @@ export default function CatalogClient({
                 ) : activeCategory !== 'All' ? (
                   <><Tag className="w-5 h-5 text-[#A2DAFF]" /> Kategori: {activeCategory}</>
                 ) : (
-                  <><Sparkles className="w-5 h-5 text-[#5FED83]" /> Katalog Utama MOD</>
+                  <><LayoutGrid className="w-5 h-5 text-[#5FED83]" /> Katalog Utama MOD</>
                 )}
               </h2>
               <p className="text-xs text-[#8B949E] mt-1">
@@ -451,7 +453,7 @@ export default function CatalogClient({
 
               <div className="bg-[#161B22] border border-[#374151] p-5 rounded-[8px]">
                 <div className="w-10 h-10 rounded-[6px] bg-[#0D1117] border border-[#374151] flex items-center justify-center text-amber-400 mb-3">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
+                  <Cpu className="w-5 h-5 text-amber-400" />
                 </div>
                 <h3 className="text-sm font-semibold text-white mb-1">Auto Scraper & IndexNow</h3>
                 <p className="text-xs text-[#8B949E] leading-relaxed">

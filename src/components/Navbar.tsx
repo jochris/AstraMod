@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, Download, Flame, Gamepad2, Smartphone, Sparkles, Menu, X, Database, Tag } from 'lucide-react';
+import { Search, Download, TrendingUp, Gamepad2, Smartphone, Home, Menu, X, Database, Tag } from 'lucide-react';
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,11 +51,11 @@ export default function Navbar() {
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-1.5 text-xs font-medium">
             <Link href="/" scroll={false} className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#5FED83]" />
+              <Home className="w-3.5 h-3.5 text-[#5FED83]" />
               <span>Beranda</span>
             </Link>
             <Link href="/?tab=popular" scroll={false} className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
-              <Flame className="w-3.5 h-3.5 text-amber-400" />
+              <TrendingUp className="w-3.5 h-3.5 text-amber-400" />
               <span>Populer</span>
             </Link>
             <Link href="/?tab=categories" scroll={false} className="px-2.5 py-1.5 rounded-[6px] text-slate-200 hover:text-[#5FED83] hover:bg-[#161B22] transition flex items-center gap-1.5">
@@ -107,7 +107,7 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
             >
-              <Sparkles className="w-4 h-4 text-[#5FED83]" /> Beranda
+              <Home className="w-4 h-4 text-[#5FED83]" /> Beranda
             </Link>
             <Link
               href="/?tab=popular"
@@ -115,7 +115,7 @@ export default function Navbar() {
               onClick={() => setIsMobileMenuOpen(false)}
               className="px-3 py-2 rounded-[6px] text-white hover:bg-[#1F2328] flex items-center gap-2"
             >
-              <Flame className="w-4 h-4 text-amber-400" /> Populer
+              <TrendingUp className="w-4 h-4 text-amber-400" /> Populer
             </Link>
             <Link
               href="/?tab=categories"

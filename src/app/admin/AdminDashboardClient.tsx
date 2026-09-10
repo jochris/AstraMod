@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AppItem } from '@/lib/db';
-import { Database, Download, RefreshCw, Plus, Trash2, ShieldCheck, Sparkles, Layers, CheckCircle } from 'lucide-react';
+import { Database, Download, RefreshCw, Plus, Trash2, ShieldCheck, Send, Cpu, Layers, CheckCircle } from 'lucide-react';
 
 interface AdminClientProps {
   initialApps: AppItem[];
@@ -159,7 +159,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
             className="h-[36px] px-3.5 rounded-[6px] bg-[#1F2328] hover:bg-[#374151] text-[#A2DAFF] border border-[#374151] text-xs font-medium transition flex items-center gap-1.5"
             title="Kirim URL ke Bing/Yandex untuk diindeks instan"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#5FED83]" /> Instant Index (IndexNow)
+            <Send className="w-3.5 h-3.5 text-[#5FED83]" /> Instant Index (IndexNow)
           </button>
 
           <div className="flex items-center bg-[#0D1117] p-1 rounded-[6px] border border-[#374151] text-xs font-medium">
@@ -216,7 +216,7 @@ export default function AdminDashboardClient({ initialApps, categories }: AdminC
         <div className="bg-[#161B22] border border-[#374151] rounded-[8px] p-6 sm:p-8">
           <div className="max-w-2xl">
             <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#5FED83]" /> Tool Impor / AstraMod Scraper Engine
+              <Cpu className="w-5 h-5 text-[#5FED83]" /> Tool Impor / AstraMod Scraper Engine
             </h2>
             <p className="text-xs text-[#8B949E] mb-6">
               Script scraper ini akan otomatis mengambil judul, versi, deskripsi mod, gambar icon, screenshot, dan link download langsung ke database NeonDB website kita.
